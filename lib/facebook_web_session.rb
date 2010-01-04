@@ -47,6 +47,7 @@ module RFacebook
       hidecheckbox = (options[:hidecheckbox] == nil) ? false : true
       frame = (options[:frame] == nil) ? false : true
       canvas = (options[:canvas] == nil) ? false : true
+      return_session = (options[:return_session] == nil) ? false : true
     
       # url pieces
       optionalNext = (nextPage == nil) ? "" : "&next=#{CGI.escape(nextPage.to_s)}"
@@ -55,9 +56,10 @@ module RFacebook
       optionalHideCheckbox = (hidecheckbox == true) ? "&hide_checkbox=true" : ""
       optionalFrame = (frame == true) ? "&fbframe=true" : ""
       optionalCanvas = (canvas == true) ? "&canvas=true" : ""
+      optionalReturnSession = (return_session == true) ? "&return_session=true" : ""
     
       # build and return URL
-      return "http://#{WWW_HOST}#{WWW_PATH_LOGIN}?v=1.0&api_key=#{@api_key}#{optionalPopup}#{optionalNext}#{optionalSkipCookie}#{optionalHideCheckbox}#{optionalFrame}#{optionalCanvas}"
+      return "http://#{WWW_HOST}#{WWW_PATH_LOGIN}?v=1.0&api_key=#{@api_key}#{optionalPopup}#{optionalNext}#{optionalSkipCookie}#{optionalHideCheckbox}#{optionalFrame}#{optionalCanvas}#{optionalReturnSession}"
     end
     
     # Gets the installation URL for this application

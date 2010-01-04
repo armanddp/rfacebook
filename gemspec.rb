@@ -5,7 +5,7 @@ require "rake/gempackagetask"
 spec = Gem::Specification.new do |s| 
   s.name = "rfacebook"
   s.summary = "A Ruby interface to the Facebook API v1.0+.  Works with RFacebook on Rails plugin (see http://rfacebook.rubyforge.org)."
-  s.version = "0.9.8"
+  s.version = "0.9.9"
   
   s.author = "Matt Pizzimenti"
   s.email = "matt@livelearncode.com"
