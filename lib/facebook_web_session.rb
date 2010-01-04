@@ -39,7 +39,7 @@ module RFacebook
     # options.popup::          boolean, whether or not to use the popup style (defaults to false)
     # options.skipcookie::     boolean, whether to force new Facebook login (defaults to false)
     # options.hidecheckbox::   boolean, whether to show the "infinite session" option checkbox
-    # options.return_session:: boolean, whether to return the session information in the initial call. (defaults to true)
+    # options.return_session:: boolean, whether to return the session information in the initial call. (defaults to false)
     def get_login_url(options={})
       # handle options
       nextPage = options[:next] ||= nil
@@ -48,7 +48,7 @@ module RFacebook
       hidecheckbox = (options[:hidecheckbox] == nil) ? false : true
       frame = (options[:frame] == nil) ? false : true
       canvas = (options[:canvas] == nil) ? false : true
-      return_session = (options[:return_session] == nil) ? true : false
+      return_session = (options[:return_session] == nil) ? false : true
     
       # url pieces
       optionalNext = (nextPage == nil) ? "" : "&next=#{CGI.escape(nextPage.to_s)}"
