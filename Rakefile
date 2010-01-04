@@ -1,6 +1,5 @@
 require "rubygems"
-Gem::manage_gems
-require "rake/gempackagetask"
+require 'rubygems/package_task'
 
 spec = Gem::Specification.new do |s| 
   s.name = "rfacebook"
@@ -29,16 +28,12 @@ spec = Gem::Specification.new do |s|
   s.requirements << "Mocha version >= 0.5.3 (used for unit testing of the Gem and Rails Plugin)"
 end
  
-Rake::GemPackageTask.new(spec) do |pkg| 
-  pkg.need_tar = true 
+Gem::PackageTask.new(spec) do |pkg|
+    pkg.need_tar = true
 end
 
-task :default => "pkg/#{spec.name}-#{spec.version}.gem" do
-  putsCheck = `grep puts lib/*`
-  if putsCheck.size > 0
-    puts "********** WARNING: stray puts left in code"
-  end
-  puts "generated latest version"
+task :default => "build/#{spec.name}-#{spec.version}.gem" do
+    puts "generated latest version"
 end
 
 # TODO: remember to make docs for the plugin too
